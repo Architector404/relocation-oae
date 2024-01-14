@@ -1,0 +1,85 @@
+.switch {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 30px;
+
+  &__input {
+    display: none;
+  }
+
+  &__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /*background: #464655;*/
+    border: 2px solid $primary;
+    border-radius: 22px;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+
+  &__slider::before {
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    left: 2px;
+    bottom: 2px;
+    width: 22px;
+    height: 22px;
+    background-color: $primary;
+    border-radius: 50%;
+    transition: 0.4s;
+    /*box-shadow: 4px 4px 4px 0 rgba(17, 17, 18, 0.5);*/
+  }
+
+  .switch__icon {
+    position: absolute;
+    top: 9px;
+    z-index: 2;
+    width: 12px;
+    height: 12px;
+  }
+
+  .switch__icon--light {
+    right: 9px;
+    color: $light;
+    opacity: 0;
+  }
+
+  .switch__icon--dark {
+    left: 9px;
+    color: $light;
+    transition: 1s;
+  }
+
+  .switch__input:hover + .switch__slider {
+    box-shadow: 0 0 2px $primary;
+  }
+
+  .switch__input:focus + .switch__slider {
+    box-shadow: 0 0 2px $primary;
+  }
+
+  /*.switch__input:checked + .switch__slider {
+    background: url("./src/assets/img/button_bg.png") no-repeat center center;
+    background-size: cover;
+  }*/
+
+  .switch__input:checked + .switch__slider::before {
+    transform: translateX(30px);
+  }
+
+  .switch__input:checked ~ .switch__icon--dark {
+    opacity: 0;
+    transition: 0.2s;
+  }
+
+  .switch__input:checked ~ .switch__icon--light {
+    opacity: 1;
+    transition: 1s;
+  }
+}

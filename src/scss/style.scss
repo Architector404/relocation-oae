@@ -1,0 +1,306 @@
+#app {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  &__panel {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding-top: stretch-size(360, 1920, 117, 157);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: stretch-size(360, 1920, 38, 50);
+  }
+
+  &__date {
+    @include media-up(sm) {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    @include text-p1;
+    color: #fff;
+
+    span {
+      display: none;
+
+      @include media-up(sm) {
+        display: block;
+        color: $primary;
+      }
+    }
+  }
+
+  &__title {
+    max-width: stretch-size(360, 1920, 317, 797);
+    @include text-h1;
+  }
+}
+
+.about {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+
+    @include media-up(lg) {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: stretch-size(992, 1920, 19, 79);
+    }
+  }
+
+  &__title {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    @include media-up(lg) {
+      display: none;
+      align-items: flex-start;
+    }
+  }
+
+  &__position {
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  &__name {
+    width: 280px;
+    @include text-h3;
+    text-transform: uppercase;
+
+    @include media-up(lg) {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__video {
+    position: relative;
+    max-width: 499px;
+    width: 100%;
+    margin-top: 42px;
+    border-radius: 10px;
+
+    @include media-up(md) {
+      width: 499px;
+    }
+
+    @include media-up(lg) {
+      min-width: stretch-size(992, 1920, 320, 499);
+      margin-top: 0;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__text .about__title {
+    display: none;
+
+    @include media-up(lg) {
+      display: flex;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    margin-top: 35px;
+  }
+
+  &__paragraph {
+    grid-area: text;
+    @include text-p3;
+  }
+}
+
+.consultations {
+  padding-top: 70px;
+
+  @include media-up(lg) {
+    padding-top: 120px;
+  }
+
+  &__title {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    @include text-h2;
+    text-align: center;
+
+    @include media-up(lg) {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    row-gap: 25px;
+
+    @include media-up(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      row-gap: 40px;
+    }
+
+    @include media-up(xl) {
+      grid-template-columns: repeat(3, 1fr);
+
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+    padding: stretch-size(360, 1920, 22, 32) stretch-size(360, 1920, 25, 42);
+    border-radius: 10px;
+    border: 1px solid $primary;
+
+    &__icon {
+      width: 49px;
+      height: 49px;
+
+      @include media-up(lg) {
+        width: 76px;
+        height: 76px;
+      }
+    }
+
+    &__title {
+      @include text-p2;
+      color: $primary;
+    }
+
+    &__text {
+      max-width: 275px;
+      @include text-p3;
+    }
+  }
+}
+
+.appointment {
+  position: relative;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding-top: stretch-size(360, 1920, 194, 258);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: stretch-size(360, 1920, 25, 47);
+  }
+
+  &__title {
+    max-width: 800px;
+    margin: 0 auto;
+    @include text-h2;
+    font-size: stretch-size(360, 1920, 27, 50);
+    line-height: stretch-size(360, 1920, 30, 54);
+    text-align: center;
+  }
+
+  &__subtitle {
+    width: stretch-size(360, 1920, 307, 729);
+    font-size: stretch-size(360, 1920, 14, 20);
+    line-height: stretch-size(360, 1920, 20, 25);
+    text-align: center;
+  }
+}
+
+.footer {
+  &__container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 47px;
+    padding-bottom: stretch-size(360, 1920, 30, 70);
+
+    @include media-up(sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    @include media-up(lg) {
+      flex-direction: row;
+      gap: 50px;
+    }
+  }
+
+  &__phone {
+    text-decoration: none;
+    @include text-p2;
+    color: $light;
+  }
+
+  &__email {
+    text-decoration: none;
+    @include text-p2;
+    font-weight: 400;
+    color: $light;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: stretch-size(360, 1920, 33, 65);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    transform: translateY(35%);
+    z-index: -1;
+    width: 348px;
+    height: 200px;
+    background: url("./src/assets/img/button_lighter.png") no-repeat;
+    background-size: contain;
+  }
+}

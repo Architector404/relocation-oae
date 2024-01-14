@@ -1,0 +1,76 @@
+.button-primary {
+  width: 208px;
+  padding: 18px 0;
+  text-transform: uppercase;
+  font-family: Unbounded, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #0A0E15;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @include media-up(md) {
+    width: 254px;
+    padding: 27px 0;
+    line-height: 26px;
+    font-size: 20px;
+  }
+}
+
+.button-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65px;
+  height: 65px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  @include media-up(sm) {
+    width: 102px;
+    height: 102px;
+  }
+
+  svg {
+    width: 65px;
+    height: 65px;
+    color: $light;
+
+    @include media-up(sm) {
+      width: 102px;
+      height: 102px;
+    }
+  }
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.button-social {
+  text-decoration: none;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: $light;
+    opacity: 0.3;
+
+    @include media-up(sm) {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+}

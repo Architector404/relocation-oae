@@ -1,0 +1,156 @@
+#app.dark {
+  background: $dark;
+  color: $light;
+
+  .header {
+    min-height: stretch-size(360, 1920, 528, 1020);
+    background-image: url("./src/assets/img/header_dark_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 70% 30%;
+
+    &__title {
+      background: linear-gradient(93deg, #FFF -15.72%, #EBD6AC 13.31%, #BAA06F 53.93%, #FFEDCA 100.14%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: $primary;
+    }
+  }
+
+  .consultations {
+    &__title {
+      background: linear-gradient(93deg, #FFF -15.72%, #EBD6AC 13.31%, #BAA06F 53.93%, #FFEDCA 100.14%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: $primary;
+    }
+
+    .item {
+      &__title {
+        color: $primary;
+      }
+    }
+  }
+
+  .appointment {
+    min-height: stretch-size(360, 1920, 759, 1029);
+    background-image: url("./src/assets/img/footer_dark_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &__title {
+      background: linear-gradient(93deg, #FFF -15.72%, #EBD6AC 13.31%, #BAA06F 53.93%, #FFEDCA 100.14%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: $primary;
+    }
+  }
+
+  .button-primary {
+    background: url("./src/assets/img/button_bg.png") no-repeat center center;
+    background-size: cover;
+
+    &:hover {
+      background: $primary;
+    }
+  }
+
+  .button-social {
+    &:hover {
+      svg {
+        color: $primary;
+      }
+    }
+  }
+}
+
+#app.light {
+  background: $light;
+  color: #464655;
+
+  .header {
+    min-height: stretch-size(360, 1920, 528, 870);
+    margin-bottom: stretch-size(360, 1920, 35, 150);
+    background-image: url("./src/assets/img/header_light_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &__content {
+      &::after {
+        display: none;
+      }
+    }
+
+    &__title {
+      background: none;
+      color: $light;
+    }
+  }
+
+  .about {
+    &__content {
+      margin-top: 0;
+    }
+  }
+
+  .consultations {
+    &__title {
+      background: none;
+      color: #464655;
+    }
+
+    .item {
+      &__title {
+        color: #464655;
+      }
+    }
+  }
+
+  .appointment {
+    min-height: stretch-size(360, 1920, 663, 822);
+    margin-top: stretch-size(360, 1920, 47, 124);
+    background-image: url("./src/assets/img/footer_light_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 25% center;
+
+    @include media-up(md) {
+      background-position: center center;
+    }
+
+    &__content {
+      padding-top: stretch-size(360, 1920, 98, 182);
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__title {
+      background: none;
+      color: $light;
+    }
+
+    &__subtitle {
+      color: $light;
+    }
+  }
+
+  .button-primary {
+    background: #EBD6AC;
+
+    &:hover {
+      background: $primary;
+    }
+  }
+
+  .button-social {
+    &:hover {
+      svg {
+        color: $light;
+      }
+    }
+  }
+}

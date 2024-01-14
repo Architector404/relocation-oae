@@ -1,0 +1,128 @@
+//-----------------------Цвета--------------------------//
+$primary: #baa170;
+$primary-gradient: linear-gradient(93.19deg, #FFFFFF -15.72%, #EBD6AC 13.31%, #BAA06F 53.93%, #FFEDCA 100.14%);
+$light: #fff;
+$dark: #111112;
+
+//-----------------------Типография---------------------//
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Unbounded:wght@700&display=swap');
+@mixin text-h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: stretch-size(360, 1920, 35, 95);
+  line-height: stretch-size(360, 1920, 38, 103);
+  text-align: center;
+  text-transform: uppercase;
+}
+@mixin text-h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: stretch-size(360, 1920, 22, 50);
+  line-height: stretch-size(360, 1920, 24, 54);
+  text-align: center;
+  text-transform: uppercase;
+}
+@mixin text-h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: stretch-size(360, 1920, 22, 35);
+  line-height: stretch-size(360, 1920, 25, 35);
+  text-align: center;
+}
+@mixin text-p1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: stretch-size(360, 1920, 16, 25);
+  line-height: stretch-size(360, 1920, 23, 40);
+  text-align: center;
+}
+@mixin text-p2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: stretch-size(360, 1920, 17, 20);
+  line-height: stretch-size(360, 1920, 27, 32);
+}
+@mixin text-p3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: stretch-size(360, 1920, 13, 15);
+  line-height: stretch-size(360, 1920, 21, 24);
+}
+
+//----------------------Сетка--------------------------//
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1900px,
+);
+
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @if not $n {
+    @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+  }
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+@mixin media-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-only($name, $breakpoints: $grid-breakpoints) {
+  $min:  breakpoint-min($name, $breakpoints);
+  $next: breakpoint-next($name, $breakpoints);
+  $max:  breakpoint-max($next);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-up($name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-down($next, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+@function stretch-size($minScreen, $maxScreen, $minSize, $maxSize) {
+  @return calc(
+          (100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen}) *
+          (#{$maxSize} - #{$minSize}) + #{$minSize}px
+  );
+}

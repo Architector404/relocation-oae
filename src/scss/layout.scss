@@ -1,0 +1,24 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include media-up(md) {
+    max-width: 575px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include media-up(lg) {
+    max-width: 970px;
+  }
+
+  @include media-up(xl) {
+    max-width: 1170px;
+  }
+
+  @include media-up(xxl) {
+    max-width: 1400px;
+  }
+}
